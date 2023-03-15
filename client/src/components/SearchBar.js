@@ -1,18 +1,31 @@
-import { useState } from "react";
-const SearchBar = () => {
-    const onChange = () => {
-        
-    }
+import { useState} from "react";
 
-    const loadEvents = () => {
+const SearchBar = ({setEvents}) => {
+  const [searchInput, setSearchInput] = useState("");
 
-    }
+  const onChange = (e) => {
+    console.log("e:", e.target.value)
+    setSearchInput(e.target.value);
+    loadEvents(e.target.value)
+    
+  };
 
-    const [searchInput, setSearchInput] = useState("");
-    <form>
+  async function loadEvents(title) {
+    // fetch the data from the backend
+    console.log("t:",title)
+    const response = await fetch(`http://localhost:8080/events/${title}`);
+    const json =  await response.json();
+    
+    setEvents(json);
+  }
 
-    </form>
-    return
-}
+return (
+      <form>
+        <label>
+          Event Name: <input type="text" value={searchInput} onChange={onChange} />
+        </label>
+      </form>
+    );
+};
 
 export default SearchBar;

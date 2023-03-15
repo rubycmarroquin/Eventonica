@@ -1,11 +1,25 @@
-import './App.css';
-import Events from './components/events';
+import { useState, useEffect } from "react";
+import "./App.css";
+import Events from "./components/events";
+import SearchBar from "./components/SearchBar";
 
 function App() {
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/events")
+      .then((response) => response.json())
+      .then((events) => {
+        setEvents(events);
+        console.log("Events fetched...", events);
+      });
+  }, []);
+
   return (
     <div className="App">
       <h1>Techtonica 2023 events</h1>
-    <Events />
+      <SearchBar setEvents={setEvents}/>
+      <Events events={events}/>
     </div>
   );
 }
