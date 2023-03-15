@@ -59,19 +59,21 @@ app.get("/events/:eventName", async (req, res) => {
 });
 
 app.post("/events/", async (req, res) => {
-  const title = req.params.title;
-  const event_time = req.params.eventTime;
-  // const description = req.params.description;
-  const location = req.params.location;
-  // const seats = req.params.seats; // int
-  // const numOfAttendees = req.params.attendees; // int
-  // const organizer = req.params.organizer;
-  // const email = req.params.email;
+  const { title, location, eventtime } = req.body;
 
-  // real connection with the DB eventonica
-  // db.query(`INSERT INTO events (title, location, eventtime) VALUES (${title}, ${location}, ${event_time})`);
-  db.query("INSERT INTO events (title, location, eventtime) VALUES (PartyInTheUSA, My House, 2023-06-25");
+  db.query(
+    `INSERT INTO events (title, location, eventtime) VALUES ('${title}', '${location}', '${eventtime}')`,
+    (error, results) => {
+      if (error) {
+        throw error;
+      } else {
+        res.send("Success!!");
+      }
+    }
+  );
 });
+
+
 
 app.listen(PORT, () =>
   console.log(`Hola! Server running on Port http://localhost:${PORT}`)
