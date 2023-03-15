@@ -88,6 +88,19 @@ app.patch("/events/:id", async(req, res) => {
   );
 });
 
+app.delete("/events/:id", async(req, res) => {
+    const event_id = req.params.id;
+    db.query(
+    `DELETE FROM events WHERE id = ${event_id}`,
+    (error, results) => {
+      if (error) {
+        throw error;
+      } else {
+        res.send("Success!!");
+      }
+    }
+  );
+});
 
 app.listen(PORT, () =>
   console.log(`Hola! Server running on Port http://localhost:${PORT}`)
