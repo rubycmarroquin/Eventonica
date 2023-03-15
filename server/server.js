@@ -73,6 +73,20 @@ app.post("/events/", async (req, res) => {
   );
 });
 
+app.patch("/events/:id", async(req, res) => {
+    const { title, location, eventtime } = req.body;
+    const event_id = req.params.id;
+    db.query(
+    `UPDATE events SET title = '${title}', location = '${location}', eventtime = '${eventtime}' WHERE id = ${event_id}`,
+    (error, results) => {
+      if (error) {
+        throw error;
+      } else {
+        res.send("Success!!");
+      }
+    }
+  );
+});
 
 
 app.listen(PORT, () =>
