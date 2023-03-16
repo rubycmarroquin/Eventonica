@@ -5,7 +5,7 @@ import SearchBar from "./components/SearchBar";
 
 function App() {
   const [events, setEvents] = useState([]);
-
+  
   useEffect(() => {
     fetch("http://localhost:8080/events")
       .then((response) => response.json())

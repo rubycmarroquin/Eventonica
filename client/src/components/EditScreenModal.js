@@ -3,7 +3,22 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Edit from "./Edit";
 
-const EditScreenModal = () => {
+const EditScreenModal = ({ onSubmit, ...rest }) => {
+  const [eventName, setEventName] = useState(rest.title);
+  const [eventLocation, setEventLocation] = useState(rest.location);
+  const [eventDate, setEventDate] = useState(rest.time.split("T")[0]);
+  const [eventId, setEventId] = useState(rest.id);
+
+  const handleClick = () => {
+    console.log("This is inside the handleClick: ", rest.id);
+    onSubmit({
+      eventId,
+      eventName,
+      eventLocation,
+      eventDate,
+    });
+  };
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -25,13 +40,22 @@ const EditScreenModal = () => {
           <Modal.Title>Edit Event</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Edit />
+          <Edit
+            eventName={eventName}
+            setEventName={setEventName}
+            eventLocation={eventLocation}
+            setEventLocation={setEventLocation}
+            eventDate={eventDate}
+            setEventDate={setEventDate}
+          />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Cancel
           </Button>
-          <Button variant="primary">Understood</Button>
+          <Button variant="primary" onClick={handleClick}>
+            Save Changes
+          </Button>
         </Modal.Footer>
       </Modal>
     </>
