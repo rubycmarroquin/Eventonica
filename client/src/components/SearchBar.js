@@ -12,10 +12,8 @@ const SearchBar = ({setEvents}) => {
 
   async function loadEvents(title) {
     // fetch the data from the backend
-    console.log("t:",title)
     const response = await fetch(`http://localhost:8080/events/${title}`);
     const json =  await response.json();
-    
     setEvents(json);
   }
 
