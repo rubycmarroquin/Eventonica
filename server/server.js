@@ -62,11 +62,11 @@ app.post("/events/", async (req, res) => {
 });
 
 app.patch("/events/:id", async (req, res) => {
-  const { title, location, eventtime } = req.body;
+  const { eventName, eventLocation, eventDate } = req.body;
   const event_id = req.params.id;
 
   db.query(
-    `UPDATE events SET title = '${title}', location = '${location}', eventtime = '${eventtime}' WHERE id = ${event_id}`,
+    `UPDATE events SET title = '${eventName}', location = '${eventLocation}', eventtime = '${eventDate}' WHERE id = ${event_id}`,
     (error, results) => {
       if (error) {
         throw error;
