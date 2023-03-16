@@ -1,4 +1,4 @@
-const DeleteButton = ({id, setRefreshPage}) => {
+const DeleteButton = ({id}) => {
     const handleDelete = () => {
         window.location.reload();
     };
@@ -21,5 +21,3 @@ const DeleteButton = ({id, setRefreshPage}) => {
 }
 
 export default DeleteButton;
-
-// props.eventId
