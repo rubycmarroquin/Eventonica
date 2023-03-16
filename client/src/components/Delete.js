@@ -1,4 +1,7 @@
 const DeleteButton = ({id, setRefreshPage}) => {
+    const handleDelete = () => {
+        window.location.reload();
+    };
 
     async function deleteEvent() {
         await fetch("http://localhost:8080/events/" + id, {
