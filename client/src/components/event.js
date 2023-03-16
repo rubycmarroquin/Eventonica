@@ -1,7 +1,8 @@
 import Card from 'react-bootstrap/Card';
 import Moment from "react-moment";
+import DeleteButton from './Delete';
 
-const EventCard = (props) =>{
+const EventCard = (props) => {
 
     return(
     <Card style={{ width: '18rem' }}>
@@ -12,7 +13,10 @@ const EventCard = (props) =>{
         {props.location}
       </Card.Text>
     </Card.Body>
+    <DeleteButton id={props.eventId} />
   </Card>
   )}
 
 export default EventCard;
+
+// props.eventId
