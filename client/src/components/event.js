@@ -5,13 +5,30 @@ import EditScreenModal from "./EditScreenModal";
 
 const EventCard = (props) => {
 
+  const refreshAfterEdit = () => {
+    window.location.reload();
+  };
+
+  async function editEvent(eventObj) {
+    await fetch("http://localhost:8080/events/" + eventObj.eventId, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(eventObj)
+    }).then(() => {
+      console.log("updated event"); 
+      refreshAfterEdit();
+    });
+  } 
+
   const onUpdate = (eventObj) => {
     // api patch call 
     let validatedTAndL = validateTitleLocation(eventObj.eventName, eventObj.eventLocation);
     let validatedDate = validateDate(eventObj.eventDate);
     console.log("This is inside the onUpdate", eventObj);
     if(validatedDate === true && validatedTAndL === true) {
-     alert("Make API CAlL")
+     editEvent(eventObj)
     } else if(validatedDate === true) {
       alert(`${validatedTAndL}`);
     } else if (validatedTAndL === true) {
@@ -63,7 +80,7 @@ function validateDate(date) {
     } else {
       return "Not a valid date";
     }
-}
+} 
 }
 
 function validateTitleLocation(title, location) {
