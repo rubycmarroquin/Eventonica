@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import Events from "./components/events";
+import PostModal from "./components/PostModal";
 import SearchBar from "./components/SearchBar";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <h1>Techtonica 2023 events</h1>
       <SearchBar setEvents={setEvents}/>
       <Events events={events}/>
+      <PostModal />
     </div>
   );
 }
