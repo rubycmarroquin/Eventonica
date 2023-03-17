@@ -30,7 +30,7 @@ const DeleteButton = ({id}) => {
     return (
         <div>
             {!promptUser ? (
-            <Button variant="danger" onClick={confirmation}>Delete</Button>
+            <Button className="DeleteButton" variant="danger" onClick={confirmation}>Delete</Button>
             ) : (
             <Button variant="danger" onClick={deleteEvent}>Confirm Delete</Button>
             )}
