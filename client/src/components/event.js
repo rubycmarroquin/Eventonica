@@ -7,10 +7,6 @@ import validateTitleLocation from "./validateTitleLocation";
 
 const EventCard = (props) => {
 
-  const refreshAfterEdit = () => {
-    window.location.reload();
-  };
-
   async function editEvent(eventObj) {
     await fetch("http://localhost:8080/events/" + eventObj.eventId, {
       method: "PATCH",
@@ -20,7 +16,7 @@ const EventCard = (props) => {
       body: JSON.stringify(eventObj)
     }).then(() => {
       console.log("updated event"); 
-      refreshAfterEdit();
+      window.location.reload();
     });
   } 
 
