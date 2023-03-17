@@ -2,16 +2,15 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 
 const DeleteButton = ({id}) => {
-    const [promptUser, setPromptUser] = useState(false);
 
     const handleDelete = () => {
         window.location.reload();
     };
 
     const confirmation = () => {
-        let password = window.prompt("What is the password?");
+        let password = window.prompt("Enter password to confirm: ");
         if(password === 'ruby') {
-            setPromptUser(true);
+            deleteEvent();
         } else {
             alert("Incorrect password");
         }
@@ -29,11 +28,7 @@ const DeleteButton = ({id}) => {
 
     return (
         <div>
-            {!promptUser ? (
             <Button className="DeleteButton" variant="danger" onClick={confirmation}>Delete</Button>
-            ) : (
-            <Button variant="danger" onClick={deleteEvent}>Confirm Delete</Button>
-            )}
         </div>
     )
 }

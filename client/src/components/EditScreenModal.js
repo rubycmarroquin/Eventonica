@@ -7,6 +7,7 @@ const EditScreenModal = ({ onSubmit, ...rest }) => {
   const [eventName, setEventName] = useState(rest.title);
   const [eventLocation, setEventLocation] = useState(rest.location);
   const [eventDate, setEventDate] = useState(rest.time.split("T")[0]);
+  const [eventDescription, setEventDescription] = useState(rest.description);
   const [eventId, setEventId] = useState(rest.id);
 
   const handleClick = () => {
@@ -16,6 +17,7 @@ const EditScreenModal = ({ onSubmit, ...rest }) => {
       eventName,
       eventLocation,
       eventDate,
+      eventDescription
     });
   };
 
@@ -47,6 +49,8 @@ const EditScreenModal = ({ onSubmit, ...rest }) => {
             setEventLocation={setEventLocation}
             eventDate={eventDate}
             setEventDate={setEventDate}
+            eventDescription={eventDescription}
+            setEventDescription={setEventDescription}
           />
         </Modal.Body>
         <Modal.Footer>

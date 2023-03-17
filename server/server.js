@@ -24,7 +24,9 @@ app.get("/", (req, res) => {
 app.get("/events", async (req, res) => {
   // real connection with the DB eventonica
   try {
-    const { rows: events } = await db.query("SELECT * FROM events ORDER BY title");
+    const { rows: events } = await db.query(
+      "SELECT * FROM events ORDER BY eventtime"
+    );
     res.send(events);
   } catch (error) {
     console.log(error);
@@ -47,10 +49,11 @@ app.get("/events/:eventName", async (req, res) => {
 });
 
 app.post("/events/", async (req, res) => {
-  const { title, location, eventtime } = req.body;
+  const { title, location, eventtime, description } = req.body;
+  console.log(description);
 
   db.query(
-    `INSERT INTO events (title, location, eventtime, "isFavorite") VALUES ('${title}', '${location}', '${eventtime}', false)`,
+    `INSERT INTO events (title, location, eventtime, "isFavorite", description) VALUES ('${title}', '${location}', '${eventtime}', false, '${description}')`,
     (error, results) => {
       if (error) {
         throw error;
@@ -62,11 +65,12 @@ app.post("/events/", async (req, res) => {
 });
 
 app.patch("/events/:id", async (req, res) => {
-  const { eventName, eventLocation, eventDate } = req.body;
+  const { eventName, eventLocation, eventDate, eventDescription } = req.body;
   const event_id = req.params.id;
+  console.log(eventDescription);
 
   db.query(
-    `UPDATE events SET title = '${eventName}', location = '${eventLocation}', eventtime = '${eventDate}' WHERE id = ${event_id}`,
+    `UPDATE events SET title = '${eventName}', location = '${eventLocation}', eventtime = '${eventDate}', description = '${eventDescription}' WHERE id = ${event_id}`,
     (error, results) => {
       if (error) {
         throw error;
@@ -81,7 +85,7 @@ app.patch("/favorites/:id", async (req, res) => {
   const event_id = req.params.id;
   let status = req.body.status;
   console.log(status);
-  if(status === true) {
+  if (status === true) {
     status = false;
   } else {
     status = true;

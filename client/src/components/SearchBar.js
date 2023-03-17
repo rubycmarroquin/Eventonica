@@ -1,4 +1,6 @@
 import { useState} from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const SearchBar = ({setEvents}) => {
   const [searchInput, setSearchInput] = useState("");
@@ -19,8 +21,10 @@ const SearchBar = ({setEvents}) => {
 
 return (
       <form>
-        <label>
-          Event Name: <input type="text" value={searchInput} onChange={onChange} />
+        <label className="SearchBarText">
+            <FontAwesomeIcon icon={faSearch} className="SearchIcon"/>
+           <input className="SearchBar" type="text" value={searchInput} onChange={onChange}
+           placeHolder="Search" /> 
         </label>
       </form>
     );

@@ -29,7 +29,6 @@ const EventCard = (props) => {
       }, body: JSON.stringify(favoriteObj)
     }).then(() => {
       console.log("updated event");
-    //   window.location.reload();
     });
   }
 
@@ -51,7 +50,7 @@ const EventCard = (props) => {
 
   return (
     <div className="CardMainDiv">
-        <Card style={{ width: "18rem", height: "18rem", margin: "5px"}}>
+        <Card style={{ width: "18rem", height: "18rem", margin: "5px", boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px"}}>
           <Card.Body>
             <Card.Title>{props.title}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">
@@ -63,6 +62,7 @@ const EventCard = (props) => {
               )}
             </Card.Subtitle>
             <Card.Text>{props.location}</Card.Text>
+            <p className="Description">{props.description}</p>
           </Card.Body>
           <div className="CardButtons">
           <DeleteButton id={props.eventId} />

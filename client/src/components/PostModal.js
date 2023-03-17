@@ -9,6 +9,7 @@ const PostModal = () => {
   const [eventName, setEventName] = useState("");
   const [eventLocation, setEventLocation] = useState("");
   const [eventDate, setEventDate] = useState("");
+  const [eventDescription, setEventDescription] = useState(""); 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -33,7 +34,7 @@ const PostModal = () => {
     let validatedDate = validateDate(eventDate);
     console.log("Inside the post modal handle click"); 
     if(validatedDate === true && validatedTAndL === true) {
-     let eventObj = {title: eventName, location: eventLocation, eventtime: eventDate};
+     let eventObj = {title: eventName, location: eventLocation, eventtime: eventDate, description: eventDescription};
      addEvent(eventObj)
     } else if(validatedDate === true) {
       alert(`${validatedTAndL}`);
@@ -58,7 +59,7 @@ const PostModal = () => {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Edit Event</Modal.Title>
+          <Modal.Title>Create Event</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Post
@@ -68,14 +69,16 @@ const PostModal = () => {
             setEventLocation={setEventLocation}
             eventDate={eventDate}
             setEventDate={setEventDate}
+            eventDescription={eventDescription} 
+            setEventDescription={setEventDescription}
           />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={handleClick}>
-            Save Changes
+          <Button variant="success" onClick={handleClick}>
+            Create
           </Button>
         </Modal.Footer>
       </Modal>

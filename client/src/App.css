@@ -5,6 +5,7 @@
   justify-content: center;
   margin-top: 50px;
   align-items: center;
+  background: #deebdd;
 }
 
 .Events {
@@ -32,6 +33,7 @@ h1 {
   display: flex;
   justify-content: center;
   /* background-color: black; */
+  margin-top: 20px;
   align-items: center;
   padding: 5px;
 }
@@ -50,4 +52,44 @@ h1 {
 .EditButton, .DeleteButton {
   height: 40px;
   width: 100px;
+}
+
+:root {
+  background-color: #deebdd;
+}
+
+.Header {
+
+}
+
+.SearchBar {
+  border: none;
+  /* opacity: 50%; */
+  border-bottom: 2px solid;
+  width: 260px;
+  font-size: large;
+  background-color: #deebdd;
+  margin-top: -10px;
+}
+
+.SearchIcon {
+  
+}
+
+.maxlength {
+  color: red;
+  font-size: x-small;
+  opacity: 50%;
+}
+
+.inputEAndL {
+  width: 465px
+}
+
+.Header {
+  color: rgb(59, 41, 41);
+}
+
+.Description {
+  font-size: small;
 }
