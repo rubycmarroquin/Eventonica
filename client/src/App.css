@@ -40,3 +40,14 @@ h1 {
   justify-content: center;
   align-items: center;
 }
+
+.CardButtons {
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 10px;
+}
+
+.EditButton, .DeleteButton {
+  height: 40px;
+  width: 100px;
+}
