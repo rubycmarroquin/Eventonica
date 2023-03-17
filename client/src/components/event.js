@@ -37,8 +37,8 @@ const EventCard = (props) => {
   }
 
   return (
-    <div>
-        <Card style={{ width: "18rem" }}>
+    <div className="CardMainDiv">
+        <Card style={{ width: "18rem", height: "18rem", margin: "5px"}}>
           <Card.Body>
             <Card.Title>{props.title}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">
