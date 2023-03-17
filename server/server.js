@@ -50,7 +50,7 @@ app.post("/events/", async (req, res) => {
   const { title, location, eventtime } = req.body;
 
   db.query(
-    `INSERT INTO events (title, location, eventtime) VALUES ('${title}', '${location}', '${eventtime}')`,
+    `INSERT INTO events (title, location, eventtime, "isFavorite") VALUES ('${title}', '${location}', '${eventtime}', false)`,
     (error, results) => {
       if (error) {
         throw error;
