@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App">
       <PostModal />
-      <h1 className="Header">Ruby's 2023 Events</h1>
+      <h1 className="Header">Upcoming Events (2023)</h1>
       <SearchBar setEvents={setEvents} />
       <div className="AppInnerDiv">
         <Events events={events} />

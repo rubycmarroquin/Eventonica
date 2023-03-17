@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Edit from "./Edit";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenSquare } from "@fortawesome/free-solid-svg-icons";
 
 const EditScreenModal = ({ onSubmit, ...rest }) => {
   const [eventName, setEventName] = useState(rest.title);
@@ -17,7 +19,7 @@ const EditScreenModal = ({ onSubmit, ...rest }) => {
       eventName,
       eventLocation,
       eventDate,
-      eventDescription
+      eventDescription,
     });
   };
 
@@ -29,7 +31,8 @@ const EditScreenModal = ({ onSubmit, ...rest }) => {
   return (
     <>
       <Button className="EditButton" variant="primary" onClick={handleShow}>
-        Edit
+        Edit{" "}
+        <FontAwesomeIcon icon={faPenSquare} />
       </Button>
 
       <Modal

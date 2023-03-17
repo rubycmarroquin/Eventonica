@@ -51,9 +51,8 @@ app.get("/events/:eventName", async (req, res) => {
 app.post("/events/", async (req, res) => {
   const { title, location, eventtime, description } = req.body;
   console.log(description);
-
   db.query(
-    `INSERT INTO events (title, location, eventtime, "isFavorite", description) VALUES ('${title}', '${location}', '${eventtime}', false, '${description}')`,
+    `INSERT INTO events (title, location, eventtime, "isFavorite", description) VALUES($1, $2, $3, $4, $5)`, [title, location, eventtime, false, description],
     (error, results) => {
       if (error) {
         throw error;
@@ -67,10 +66,10 @@ app.post("/events/", async (req, res) => {
 app.patch("/events/:id", async (req, res) => {
   const { eventName, eventLocation, eventDate, eventDescription } = req.body;
   const event_id = req.params.id;
-  console.log(eventDescription);
 
   db.query(
-    `UPDATE events SET title = '${eventName}', location = '${eventLocation}', eventtime = '${eventDate}', description = '${eventDescription}' WHERE id = ${event_id}`,
+    "UPDATE events SET title = $1, location = $2, eventtime = $3, description = $4 WHERE id =$5",
+    [eventName, eventLocation, eventDate, eventDescription, event_id],
     (error, results) => {
       if (error) {
         throw error;

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const DeleteButton = ({id}) => {
 
@@ -28,7 +30,9 @@ const DeleteButton = ({id}) => {
 
     return (
         <div>
-            <Button className="DeleteButton" variant="danger" onClick={confirmation}>Delete</Button>
+            <Button className="DeleteButton" variant="danger" onClick={confirmation}>
+                Delete {" "}<FontAwesomeIcon icon={faTrash} />
+                </Button>
         </div>
     )
 }
