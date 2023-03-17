@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 app.get("/events", async (req, res) => {
   // real connection with the DB eventonica
   try {
-    const { rows: events } = await db.query("SELECT * FROM events");
+    const { rows: events } = await db.query("SELECT * FROM events ORDER BY title");
     res.send(events);
   } catch (error) {
     console.log(error);
@@ -37,7 +37,7 @@ app.get("/events/:eventName", async (req, res) => {
   // real connection with the DB eventonica
   try {
     const { rows: events } = await db.query(
-      `SELECT * FROM events WHERE title iLIKE '%${event_name}%'`
+      `SELECT * FROM events WHERE title iLIKE '%${event_name}%' ORDER BY title`
     );
     res.send(events);
   } catch (error) {
