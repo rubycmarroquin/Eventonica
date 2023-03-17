@@ -13,8 +13,35 @@ const PostModal = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  async function addEvent(data){
+    await fetch("http://localhost:8080/events/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    }).then(() => {
+      console.log("added event"); 
+      window.location.reload();
+    });
+  }
+
   const handleClick = () => {
-    alert("Make API call")
+    // api patch call 
+    let validatedTAndL = validateTitleLocation(eventName, eventLocation);
+    let validatedDate = validateDate(eventDate);
+    console.log("Inside the post modal handle click"); 
+    if(validatedDate === true && validatedTAndL === true) {
+     let eventObj = {title: eventName, location: eventLocation, eventtime: eventDate};
+     addEvent(eventObj)
+    } else if(validatedDate === true) {
+      alert(`${validatedTAndL}`);
+    } else if (validatedTAndL === true) {
+      alert(`${validatedDate}`)
+    } else {
+      alert(`WRONG ENTRY: ${validatedDate} and ${validatedTAndL}`);
+    }
   }
 
   return (
