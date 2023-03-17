@@ -20,8 +20,8 @@ function App() {
     <div className="App">
       <h1>Techtonica 2023 events</h1>
       <SearchBar setEvents={setEvents}/>
-      <Events events={events}/>
       <PostModal />
+      <Events events={events}/>
     </div>
   );
 }
