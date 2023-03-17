@@ -6,7 +6,7 @@ import SearchBar from "./components/SearchBar";
 
 function App() {
   const [events, setEvents] = useState([]);
-  
+
   useEffect(() => {
     fetch("http://localhost:8080/events")
       .then((response) => response.json())
@@ -18,10 +18,12 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Techtonica 2023 events</h1>
-      <SearchBar setEvents={setEvents}/>
       <PostModal />
-      <Events events={events}/>
+      <h1>Techtonica 2023 events</h1>
+      <SearchBar setEvents={setEvents} />
+      <div className="AppInnerDiv">
+        <Events events={events} />
+      </div>
     </div>
   );
 }
