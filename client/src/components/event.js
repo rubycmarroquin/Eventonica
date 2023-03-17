@@ -4,6 +4,7 @@ import DeleteButton from "./Delete";
 import EditScreenModal from "./EditScreenModal";
 import validateDate from "./validateDate";
 import validateTitleLocation from "./validateTitleLocation";
+import Favorite from "./favorite";
 
 const EventCard = (props) => {
 
@@ -19,6 +20,18 @@ const EventCard = (props) => {
       window.location.reload();
     });
   } 
+
+    async function updateFavoriteStatus(favoriteObj) {
+    await fetch("http://localhost:8080/favorites/" + props.eventId, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      }, body: JSON.stringify(favoriteObj)
+    }).then(() => {
+      console.log("updated event");
+    //   window.location.reload();
+    });
+  }
 
   const onUpdate = (eventObj) => {
     // api patch call 
@@ -51,8 +64,11 @@ const EventCard = (props) => {
             </Card.Subtitle>
             <Card.Text>{props.location}</Card.Text>
           </Card.Body>
+          <div className="CardButtons">
           <DeleteButton id={props.eventId} />
           <EditScreenModal {...props} id={props.eventId} onSubmit={onUpdate}/>
+          <Favorite id={props.eventId} favoriteStatus={props.isFavorite} updateFavoriteStatus={updateFavoriteStatus}/> 
+          </div>
         </Card>
     </div>
   );
