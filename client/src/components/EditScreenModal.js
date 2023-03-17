@@ -26,7 +26,7 @@ const EditScreenModal = ({ onSubmit, ...rest }) => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button className="EditButton" variant="primary" onClick={handleShow}>
         Edit
       </Button>
 
