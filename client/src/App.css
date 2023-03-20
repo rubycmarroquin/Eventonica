@@ -1,8 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Rowdies:wght@300&display=swap");
+
 .App {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-top: 50px;
+  align-items: center;
+  background: #deebdd;
 }
 
 .Events {
@@ -10,6 +15,87 @@
 }
 
 h1 {
-  color: #00556e;
-  margin-bottom: 50px !important;
+  margin-bottom: 30px !important;
+}
+
+.PostModalButton {
+  height: 40px;
+  width: 200px;
+  border-radius: 50px;
+}
+
+.PostModalMainDiv {
+  position: absolute;
+  top: 50px;
+  right: 120px;
+}
+
+.CardMainDiv {
+  display: flex;
+  justify-content: center;
+  /* background-color: black; */
+  margin-top: 20px;
+  align-items: center;
+  padding: 5px;
+}
+
+.Events {
+  justify-content: center;
+  align-items: center;
+}
+
+.CardButtons {
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 10px;
+}
+
+.EditButton,
+.DeleteButton {
+  height: 40px;
+  width: 100px;
+}
+
+:root {
+  background-color: #deebdd;
+}
+
+.Header {
+  font-family: "Rowdies", cursive;
+  font-size: 60px;
+  background-color: rgb(10, 52, 35);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: rgba(255, 255, 255, 0.5) 0px 3px 3px;
+}
+
+.SearchBar {
+  border: none;
+  border-bottom: 2px solid;
+  width: 260px;
+  font-size: large;
+  background-color: #deebdd;
+  margin-top: -10px;
+}
+
+.maxlength {
+  color: red;
+  font-size: x-small;
+  opacity: 50%;
+}
+
+.inputEAndL {
+  width: 465px;
+}
+
+.DescriptionInput {
+  width: 465px;
+  height: 100px;
+}
+
+.Description {
+  font-size: small;
+  opacity: 80%;
 }

@@ -1,26 +1,20 @@
-import { useState, useEffect } from "react";
 import EventCard from "./event";
-import CardGroup from 'react-bootstrap/CardGroup';
+import CardGroup from "react-bootstrap/CardGroup";
 
-
-
-function Events() {
-    const [events, setEvents] = useState([]);
-
-    useEffect(() => {
-        fetch("http://localhost:8080/events")
-          .then((response) => response.json())
-          .then(events => {
-            setEvents(events); 
-            console.log('Events fetched...', events);
-            });
-          }, []);
-
+function Events({ events }) {
   return (
     <CardGroup className="Events">
-            {events.map(event =>
-            <EventCard key={event.id} title={event.title} location={event.location} time={event.eventtime}/>
-            )}
+      {events.map((event) => (
+        <EventCard
+          key={event.id}
+          eventId={event.id}
+          title={event.title}
+          location={event.location}
+          time={event.eventtime}
+          isFavorite={event.isFavorite}
+          description={event.description}
+        />
+      ))}
     </CardGroup>
   );
 }
